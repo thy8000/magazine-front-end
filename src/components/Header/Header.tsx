@@ -1,6 +1,7 @@
 import { useQuery, gql } from "@apollo/client";
 import Image  from 'next/image';
 import { HeaderQuery } from '../../queries/_index';
+import Icon from '../Icon/Icon';
 
 export default function Header() {
     const { data } = useQuery(HeaderQuery);
@@ -9,8 +10,6 @@ export default function Header() {
     const headerCategories = getHeaderCategories(data);
 
     const socialShares = getSocialShares(data);
-
-    console.log(socialShares)
 
     return (
         <header className="flex bg-header">
@@ -41,12 +40,12 @@ export default function Header() {
                     ) }
 
                     { socialShares && (
-                        <div>
+                        <div className="flex gap-4 items-center justify-center">
                             {socialShares?.map((social: any) => (
                                 social.url && (
-                                    <li>
-                                        <a href={social.url}>{social.slug}</a>
-                                    </li>
+                                    <a href="#" className="cursor-pointer">
+                                        {<Icon name={social.slug} className="fill-white hover:fill-black transition-all	duration-500 ease-out" width={14} height={14} />}
+                                    </a>
                                 )
                             ))}
                         </div>
