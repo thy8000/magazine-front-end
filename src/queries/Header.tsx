@@ -3,10 +3,7 @@ import { gql } from "@apollo/client";
 export const HeaderQuery = gql`
     {
         customLogo {
-          description
-          height
-          url
-          width
+          data
         }
         themeOptionsHeader {
           categoriesList

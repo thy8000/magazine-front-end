@@ -22,6 +22,10 @@ const fallbackFonts = [
 let customColors = {
   page:   'var(--pageColor)',
   header: 'var(--headerColor)',
+  icon:   'var(--iconColor)',
+  iconHover: 'var(--iconHoverColor)',
+  link: 'var(--linkColor)',
+  linkHover: 'var(--linkHoverColor)',
 };
 
 module.exports = {

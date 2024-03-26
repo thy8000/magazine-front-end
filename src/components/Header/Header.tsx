@@ -6,7 +6,8 @@ import Icon from '../Icon/Icon';
 export default function Header() {
     const { data } = useQuery(HeaderQuery);
 
-    const customLogo = data?.customLogo ?? [];
+    const customLogo = getCustomLogo(data);
+
     const headerCategories = getHeaderCategories(data);
 
     const socialShares = getSocialShares(data);
@@ -31,7 +32,7 @@ export default function Header() {
                         <div>
                             <ul className="flex justify-center items-center gap-8 h-full">
                                 {headerCategories?.map((category: any) => (
-                                    <li key={category.term_id}>
+                                    <li key={category.term_id} className="text-link hover:text-linkHover transition-all duration-500 ease-out">
                                         <a href="#">{category.name}</a>
                                     </li>
                                 ))}
@@ -44,7 +45,7 @@ export default function Header() {
                             {socialShares?.map((social: any) => (
                                 social.url && (
                                     <a href="#" className="cursor-pointer">
-                                        {<Icon name={social.slug} className="fill-white hover:fill-black transition-all	duration-500 ease-out" width={14} height={14} />}
+                                        {<Icon name={social.slug} className="fill-icon hover:fill-iconHover transition-all duration-500 ease-out" width={14} height={14} />}
                                     </a>
                                 )
                             ))}
@@ -54,6 +55,16 @@ export default function Header() {
             </div>
         </header>
     );
+}
+
+function getCustomLogo(data: any) {
+    const customLogo = data?.customLogo?.data ?? [];
+    
+    if(customLogo.length === 0) {
+        return [];
+    }
+       
+    return JSON.parse(customLogo);
 }
 
 function getHeaderCategories(data: any) {

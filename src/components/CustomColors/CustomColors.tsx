@@ -6,16 +6,13 @@ import Head from 'next/head';
 export default function CustomColors() {
     const { data } = useQuery(CustomColorsQuery);
 
-    var customColors = data?.customColors ?? [];
-    const hasCustomColors = Object.keys(customColors).length !== 0;
+    let customColors = getCustomColors(data);
 
-    if(!hasCustomColors){
+    if(customColors === undefined || customColors.length === 0) {
         return;
     }
 
-    customColors = filterCustomColors(customColors);
-
-    var customColorsRoot = generateCustomColorsRoot(customColors);
+    let customColorsRoot = generateCustomColorsRoot(customColors);
 
     return (
         <Head>
@@ -24,10 +21,14 @@ export default function CustomColors() {
     )
 }
 
-function filterCustomColors(customColors: {}) {
-    return Object.fromEntries(
-        Object.entries(customColors).filter(([key]) => key !== '__typename')
-    )
+function getCustomColors(data: any) {
+    let customColors = data?.customColors?.data ?? '';
+
+    if(customColors === undefined || customColors.length === 0) {
+        return;
+    }
+
+    return JSON.parse(customColors) ?? [];
 }
 
 function generateCustomColorsRoot(customColors: {}) {
