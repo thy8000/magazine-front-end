@@ -2,14 +2,13 @@ import Image  from 'next/image';
 import { formatDate } from '../../includes/utils/format-date';
 
 export default function CardVertical({post}: any) {
-    let postTitle = post?.title ?? '';
     let postThumbnail = post?.featuredImage?.node?.mediaDetails?.sizes[0]?.sourceUrl ?? [];
 
-    let postDate = new Date(post.date);
+    let postDate = post.date;
     let formattedDate = formatDate(postDate, "dd 'de' LLLL 'de' yyyy");
 
     return(
-        <div className="flex flex-col gap-[15px]">
+        <a className="group/card flex flex-col gap-[15px] w-3/12 cursor-pointer">
             {postThumbnail && (
                 <div>
                     <Image 
@@ -18,16 +17,18 @@ export default function CardVertical({post}: any) {
                         width={260}
                         height={145}
                         src={postThumbnail}
-                        alt={postTitle}
+                        alt={post.title}
                     />
                 </div>
             )}
 
             <div>
-                <h3 className="text-lg">{postTitle}</h3>
+                <h3 className="font-medium font-secondary text-lg text-title group-hover/card:text-titleHover transition-all duration-500 ease-out">
+                    <a href={post.link}>{post.title}</a>
+                </h3>
 
-                <time className="text-xs">{formattedDate}</time>
+                <time className="font-secondary text-xs text-text font-bold" dateTime={postDate}>{formattedDate}</time>
             </div>
-        </div>
+        </a>
     );
 }

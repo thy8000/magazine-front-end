@@ -26,6 +26,9 @@ let customColors = {
   iconHover: 'var(--iconHoverColor)',
   link: 'var(--linkColor)',
   linkHover: 'var(--linkHoverColor)',
+  title: 'var(--titleColor)',
+  titleHover: 'var(--titleHoverColor)',
+  text: 'var(--textColor)'
 };
 
 module.exports = {

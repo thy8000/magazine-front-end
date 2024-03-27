@@ -35,8 +35,8 @@ export default function Header() {
                         <div>
                             <ul className="flex justify-center items-center gap-8 h-full">
                                 {headerCategories?.map((category: any) => (
-                                    <li key={category.term_id} className="text-link hover:text-linkHover transition-all duration-500 ease-out">
-                                        <a href="#">{category.name}</a>
+                                    <li className="group/menu py-8" key={category.term_id}>
+                                        <a className="text-link font-medium group-hover/menu:text-linkHover transition-all duration-500 ease-out" href="#">{category.name}</a>
 
                                         <MegaMenu
                                             termID={category.term_id}

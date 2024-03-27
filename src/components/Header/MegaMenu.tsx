@@ -12,7 +12,7 @@ export default function MegaMenu({termID}: any) {
     }
 
     return (
-        <ul className="absolute top-[4.688rem] left-1/2 -translate-x-2/4 bg-black p-8 w-screen max-w-[1200px]">
+        <ul className="absolute top-[4.688rem] left-1/2 -translate-x-2/4 hidden group-hover/menu:flex bg-black p-8 w-screen max-w-[1200px]">
             {posts.map((post: any) => (
                 <CardVertical 
                     post={post}
