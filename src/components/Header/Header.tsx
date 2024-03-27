@@ -2,6 +2,7 @@ import { useQuery, gql } from "@apollo/client";
 import Image  from 'next/image';
 import { HeaderQuery } from '../../queries/_index';
 import Icon from '../Icon/Icon';
+import MenuItemPosts from './MenuItemPosts';
 
 export default function Header() {
     const { data } = useQuery(HeaderQuery);
@@ -12,8 +13,10 @@ export default function Header() {
 
     const socialShares = getSocialShares(data);
 
+    let posts;
+
     return (
-        <header className="flex bg-header">
+        <header className="relative flex bg-header">
             <div className="container">
                 <div className="flex justify-evenly">
                     <div>
@@ -34,6 +37,10 @@ export default function Header() {
                                 {headerCategories?.map((category: any) => (
                                     <li key={category.term_id} className="text-link hover:text-linkHover transition-all duration-500 ease-out">
                                         <a href="#">{category.name}</a>
+
+                                        <MenuItemPosts
+                                            termID={category.term_id}
+                                        />
                                     </li>
                                 ))}
                             </ul>
