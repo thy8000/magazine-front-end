@@ -2,7 +2,7 @@ import { useQuery, gql } from "@apollo/client";
 import Image  from 'next/image';
 import { HeaderQuery } from '../../queries/_index';
 import Icon from '../Icon/Icon';
-import MenuItemPosts from './MenuItemPosts';
+import MegaMenu from './MegaMenu';
 
 export default function Header() {
     const { data } = useQuery(HeaderQuery);
@@ -38,7 +38,7 @@ export default function Header() {
                                     <li key={category.term_id} className="text-link hover:text-linkHover transition-all duration-500 ease-out">
                                         <a href="#">{category.name}</a>
 
-                                        <MenuItemPosts
+                                        <MegaMenu
                                             termID={category.term_id}
                                         />
                                     </li>
