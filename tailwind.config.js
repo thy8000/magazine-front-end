@@ -45,6 +45,10 @@ module.exports = {
       black: colors.black,
       neutral: colors.neutral,
       ...customColors,
+      transparent: colors.transparent,
+    },
+    container: {
+      center: true,
     },
     extend: {},
   },
