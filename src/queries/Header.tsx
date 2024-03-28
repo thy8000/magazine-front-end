@@ -6,7 +6,7 @@ export const HeaderQuery = gql`
           data
         }
         themeOptionsHeader {
-          categoriesList
+          data
         }
         customSocialShares {
           data

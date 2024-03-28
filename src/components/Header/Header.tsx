@@ -11,15 +11,17 @@ export default function Header() {
 
     const headerCategories = getHeaderCategories(data);
 
+    const headerIsTransparent = getHeaderTransparent(data) ? 'bg-transparent' : 'bg-header';
+
     const socialShares = getSocialShares(data);
 
     let posts;
 
     return (
-        <header className="relative flex bg-header">
+        <header className={`relative flex ${headerIsTransparent}`}>
             <div className="container">
                 <div className="flex justify-evenly">
-                    <div>
+                    <div className="flex justify-center items-center">
                         { customLogo.url !== null && (
                             <Image
                                 className="w-auto"
@@ -75,15 +77,16 @@ function getCustomLogo(data: any) {
 }
 
 function getHeaderCategories(data: any) {
-    const themeOptionsHeader = data?.themeOptionsHeader ?? [];
+    
+    const themeOptionsHeader = data?.themeOptionsHeader?.data ?? [];
 
-    if(themeOptionsHeader.categoriesList === undefined) {
+    if(themeOptionsHeader.length == 0) {
         return;
     }
 
-    const headerCategories = JSON.parse(themeOptionsHeader.categoriesList) ?? [];
+    const headerCategories = JSON.parse(data.themeOptionsHeader.data) ?? [];
 
-    return headerCategories;
+    return headerCategories.categoriesList;
 }
 
 function getSocialShares(data: any) {
@@ -96,4 +99,16 @@ function getSocialShares(data: any) {
     const socialShares = JSON.parse(socialSharesData) ?? [];
 
     return Object.values(socialShares);
+}
+
+function getHeaderTransparent(data: any) {
+    var headerTransparent = data?.themeOptionsHeader?.data ?? [];
+
+    if(headerTransparent.length == 0) {
+        return;
+    }
+
+    headerTransparent = JSON.parse(headerTransparent);
+
+    return headerTransparent.transparentHeader;
 }

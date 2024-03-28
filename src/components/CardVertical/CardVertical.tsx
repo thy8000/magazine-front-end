@@ -23,7 +23,7 @@ export default function CardVertical({post}: any) {
             )}
 
             <div>
-                <h3 className="font-medium font-secondary text-lg text-title group-hover/card:text-titleHover transition-all duration-500 ease-out">
+                <h3 className="max-w-[23ch] font-medium font-secondary leading-5 text-title group-hover/card:text-titleHover transition-all duration-500 ease-out">
                     <a href={post.link}>{post.title}</a>
                 </h3>
 
