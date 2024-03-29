@@ -1,8 +1,9 @@
 import { useQuery, gql } from "@apollo/client";
 
-import { Meta, Header, CustomColors } from "../components/_index";
+import { Meta, Header, CustomColors } from "../../components/_index";
+import { Hero } from './components/_index';
 
-import { FrontPageQuery  } from "../queries/FrontPage";
+import { FrontPageQuery  } from "../../queries/FrontPage";
 
 export default function FrontPage() {
   const { data } = useQuery(FrontPageQuery);
@@ -20,7 +21,11 @@ export default function FrontPage() {
 
       <Header />
 
-      <h1>Front Page</h1>
+      <main>
+        <Hero />
+        
+        <h1>Front Page</h1>
+      </main>
     </div>
   );
 }

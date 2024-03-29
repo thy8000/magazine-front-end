@@ -89,7 +89,7 @@ export default function Header() {
               {socialShares?.map(
                 (social: any) =>
                   social.url && (
-                    <a href="#" className="cursor-pointer">
+                    <a href={social.url} className="cursor-pointer">
                       {
                         <Icon
                           name={social.slug}
