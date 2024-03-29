@@ -22,13 +22,14 @@ const fallbackFonts = [
 let customColors = {
   page:   'var(--pageColor)',
   header: 'var(--headerColor)',
+  megaMenu: 'var(--headerMegaMenuColor)',
   icon:   'var(--iconColor)',
   iconHover: 'var(--iconHoverColor)',
   link: 'var(--linkColor)',
   linkHover: 'var(--linkHoverColor)',
   title: 'var(--titleColor)',
   titleHover: 'var(--titleHoverColor)',
-  text: 'var(--textColor)'
+  text: 'var(--textColor)',
 };
 
 module.exports = {
