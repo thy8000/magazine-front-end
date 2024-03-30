@@ -14,16 +14,16 @@ export default function Header() {
 
   const headerIsTransparent = getHeaderTransparent(data)
     ? "bg-transparent"
-    : "bg-transparent lg:bg-header";
+    : "bg-header";
 
   const socialShares = getSocialShares(data);
 
   let posts;
 
   return (
-    <header className={`absolute top-0 left-0 z-20 flex w-full ${headerIsTransparent}`}>
+    <header className={`absolute top-0 left-0 z-40 flex w-full ${headerIsTransparent}`}>
       <div className="container">
-        <div className="relative flex lg:hidden w-full h-20 bg-header">
+        <div className="relative flex lg:hidden w-full h-20">
           {customLogo.url !== null && (
             <Image
               className="w-52 object-contain"
