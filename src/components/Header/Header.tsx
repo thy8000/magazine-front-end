@@ -21,7 +21,7 @@ export default function Header() {
   let posts;
 
   return (
-    <header className={`relative flex ${headerIsTransparent}`}>
+    <header className={`absolute top-0 left-0 z-20 flex w-full ${headerIsTransparent}`}>
       <div className="container">
         <div className="relative flex lg:hidden w-full h-20 bg-header">
           {customLogo.url !== null && (
@@ -42,7 +42,7 @@ export default function Header() {
           </button>
         </div>
 
-        <div className="header-wrapper absolute lg:relative top-0 -left-full lg:left-0 flex justify-start lg:justify-evenly flex-col lg:flex-row bg-header lg:bg-transparent w-full lg:w-auto h-screen lg:h-auto transition-all duration-500 ease-out">
+        <div className="header-wrapper absolute lg:relative top-0 -left-full lg:left-0 flex justify-start lg:justify-between flex-col lg:flex-row bg-header lg:bg-transparent w-full lg:w-auto h-screen lg:h-auto transition-all duration-500 ease-out">
           <div className="flex justify-start lg:justify-center items-center pt-12 lg:pt-0 pl-4 lg:pl-0">
             {customLogo.url !== null && (
               <Image
