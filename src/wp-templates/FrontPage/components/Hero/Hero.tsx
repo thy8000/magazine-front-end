@@ -1,18 +1,17 @@
 import { useQuery, gql } from "@apollo/client";
-import { HeroPostIDQuery, HeroPostByIDQuery } from "../../../../queries/_index";
+import { HeroPostByIDQuery } from "../../../../queries/_index";
 import { formatDate } from '../../../../includes/utils/format-date';
 
-export default function Hero() {
-  const { data: postIDData } = useQuery(HeroPostIDQuery);
+export default function Hero({themeOptionsHome}: any) {
+  const heroPostID = getHeroPostID(themeOptionsHome);
 
-  const { data: postByIDData } = useQuery(HeroPostByIDQuery, {
-    skip: !postIDData,
+  const { data } = useQuery(HeroPostByIDQuery, {
     variables: {
-      postID: getHeroPostID(postIDData),
+      postID: heroPostID,
     },
   });
 
-  const heroPost = getHeroPostByID(postByIDData);
+  const heroPost = getHeroPostByID(data);
 
   if (heroPost.length == 0) {
     return;
@@ -21,8 +20,6 @@ export default function Hero() {
   const heroBackgroundImage =
     heroPost?.featuredImage?.node?.mediaDetails?.sizes[0]?.sourceUrl ?? [];
   const heroCategory = heroPost?.categories?.nodes[0] ?? [];
-
-  console.log(heroPost);
 
   let postDate = heroPost.dateGmt;
   let formattedDate = formatDate(postDate, "dd 'de' LLLL 'de' yyyy");
@@ -60,16 +57,18 @@ export default function Hero() {
   );
 }
 
-function getHeroPostID(data: any) {
-  const heroPostID = data?.themeOptionsHome?.data ?? [];
+function getHeroPostID(data: any): any[] {
+  const heroData = data?.data ?? [];
 
-  if (heroPostID.length == 0) {
-    return 0;
+  if(heroData.length == 0) {
+    return [];
   }
 
-  const heroPostIDJSON = JSON.parse(heroPostID);
+  const heroDataJSON = JSON.parse(heroData);
 
-  return heroPostIDJSON.homeFeaturedPost;
+  const heroPostID = heroDataJSON.homeFeaturedPost ?? [];
+
+  return heroPostID;
 }
 
 function getHeroPostByID(data: any) {
