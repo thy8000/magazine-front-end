@@ -7,6 +7,8 @@ export default function Content({themeOptionsHome}: any) {
 
     console.log(data);
 
+    // Loopar o data dentro do content, com um grid de posts e um sidebar pra cada item.
+
     return (
         <div>
             Content
@@ -22,10 +24,6 @@ function getHomePostsList(data: any) {
     }
 
     const dataJSON = JSON.parse(dataObject);
-
-    if(dataJSON.length == 0) {
-        return [];
-    }
 
     const postsLists = dataJSON?.homePostsList ?? [];
 
