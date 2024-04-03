@@ -1,6 +1,6 @@
 import { useQuery, gql } from "@apollo/client";
-import { HeroPostByIDQuery } from "../../../../queries/_index";
-import { formatDate } from '../../../../includes/utils/format-date';
+import { HeroPostByIDQuery } from "../../../queries/_index";
+import { formatDate } from '../../../includes/utils/format-date';
 
 export default function Hero({themeOptionsHome}: any) {
   const heroPostID = getHeroPostID(themeOptionsHome);

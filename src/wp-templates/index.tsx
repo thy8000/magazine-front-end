@@ -1,4 +1,4 @@
-import { FrontPage } from "./FrontPage/_index";
+import { default as FrontPage } from "./FrontPage/_index";
 import page from "./page";
 import single from "./single";
 import archive from "./archive";

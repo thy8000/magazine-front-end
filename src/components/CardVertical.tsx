@@ -1,5 +1,5 @@
 import Image  from 'next/image';
-import { formatDate } from '../../includes/utils/format-date';
+import { formatDate } from '../includes/utils/format-date';
 
 export default function CardVertical({post}: any) {
     let postThumbnail = post?.featuredImage?.node?.mediaDetails?.sizes[0]?.sourceUrl ?? [];

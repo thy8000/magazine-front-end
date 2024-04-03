@@ -1,5 +1,5 @@
 import { useQuery, gql } from "@apollo/client";
-import { CustomColorsQuery } from '../../queries/_index';
+import { CustomColorsQuery } from '../queries/_index';
 
 import Head from 'next/head';
 

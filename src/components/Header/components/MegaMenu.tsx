@@ -1,6 +1,6 @@
 import { useQuery, gql } from "@apollo/client";
-import { PostsByTermIDQuery } from '../../queries/_index';
-import { CardVertical } from "../_index";
+import { PostsByTermIDQuery } from '../../../queries/_index';
+import { CardVertical } from "../../_index";
 
 export default function MegaMenu({termID}: any) {
     const data = useQuery(PostsByTermIDQuery, {variables: {termID: termID}});

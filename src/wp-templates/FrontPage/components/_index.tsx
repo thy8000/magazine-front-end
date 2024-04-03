@@ -1,3 +1,2 @@
-export { Hero } from './Hero/_index';
-
-export { Content } from './Content/_index'
+export { default as Hero } from './Hero';
+export { default as Content } from './Content';

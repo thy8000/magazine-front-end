@@ -1,11 +1,11 @@
 import React from "react";
-import Facebook from "../../assets/icons/facebook.svg";
-import Instagram from "../../assets/icons/instagram.svg";
-import Linkedin from "../../assets/icons/linkedin.svg";
-import Twitter from "../../assets/icons/twitter.svg";
-import Youtube from "../../assets/icons/youtube.svg";
-import CloseMenu from "../../assets/icons/close-menu.svg";
-import OpenMenu from "../../assets/icons/open-menu.svg";
+import Facebook from "../assets/icons/facebook.svg";
+import Instagram from "../assets/icons/instagram.svg";
+import Linkedin from "../assets/icons/linkedin.svg";
+import Twitter from "../assets/icons/twitter.svg";
+import Youtube from "../assets/icons/youtube.svg";
+import CloseMenu from "../assets/icons/close-menu.svg";
+import OpenMenu from "../assets/icons/open-menu.svg";
 
 interface IconProps {
   name: keyof typeof iconTypes;
