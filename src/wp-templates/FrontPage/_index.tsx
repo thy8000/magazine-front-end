@@ -1,37 +1,23 @@
 import { useQuery, gql } from "@apollo/client";
 
-import { Meta, Header, CustomColors } from "../../components/_index";
-import { Hero, Content } from './components/_index';
+import { FrontPageQuery, ThemeCustomizerQuery  } from "../../queries/_index";
 
-import { FrontPageQuery  } from "../../queries/FrontPage";
+import { Meta, Header, CustomColors } from "../../components/_index";
 
 export default function FrontPage() {
-  const { data } = useQuery(FrontPageQuery);
+  const dataFrontPage = useQuery(FrontPageQuery);
+  const dataThemeCustomizer = useQuery(ThemeCustomizerQuery);
 
-  const siteGeneralSettings = data?.generalSettings ?? [];
+  const generalSettings = dataFrontPage?.data?.generalSettings ?? [];
 
-  const themeOptionsHome = data?.themeOptionsHome ?? [];
+  const customColors = dataThemeCustomizer?.data?.themeCustomizer?.customColor ?? [];
 
   return (
     <div className="bg-page_color">
       <Meta
-        title={siteGeneralSettings.title ?? ""}
-        description={siteGeneralSettings.description ?? ""}
+        title={generalSettings.title ?? ""}
+        description={generalSettings.description ?? ""}
       />
-
-      <CustomColors />
-
-      <Header />
-
-      <main>
-        <Hero 
-          themeOptionsHome={themeOptionsHome}
-        />
-        
-        <Content 
-          themeOptionsHome={themeOptionsHome}
-        />
-      </main>
     </div>
   );
 }

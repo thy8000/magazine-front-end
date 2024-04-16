@@ -1,17 +1,20 @@
 import { gql } from "@apollo/client";
 
 export const FrontPageQuery = gql`
-    query getFrontPage {
-        generalSettings {
-            title
-            description
-        }
-        themeOptionsHome {
-            data
-        }        
+  query getFrontPage {
+    generalSettings {
+      title
+      description
     }
+    themeOptions {
+      themeOptionsHome {
+        homeFeaturedPostID
+      }
+    }
+  }
 `;
 
+/*
 export const HeroPostByIDQuery = gql`
   query HeroPostByIDQuery($postID: ID!) {
     post(id: $postID, idType: DATABASE_ID) {
@@ -37,3 +40,4 @@ export const HeroPostByIDQuery = gql`
     }
   }
 `;
+*/
