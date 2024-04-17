@@ -1,18 +1,20 @@
-import { useQuery, gql } from "@apollo/client";
-import { CustomColorsQuery } from '../queries/_index';
-
 import Head from 'next/head';
 
-export default function CustomColors() {
-    const { data } = useQuery(CustomColorsQuery);
+interface CustomColor {
+    color: string;
+    slug: string;
+}
 
-    let customColors = getCustomColors(data);
+interface CustomColorProps {
+    customColors?: CustomColor[];
+}
 
-    if(customColors === undefined || customColors.length === 0) {
+export default function CustomColors({customColors}: CustomColorProps) {
+    if(customColors.length == 0) {
         return;
     }
 
-    let customColorsRoot = generateCustomColorsRoot(customColors);
+    let customColorsRoot = createRoot(customColors);
 
     return (
         <Head>
@@ -21,18 +23,8 @@ export default function CustomColors() {
     )
 }
 
-function getCustomColors(data: any) {
-    let customColors = data?.customColors?.data ?? '';
-
-    if(customColors === undefined || customColors.length === 0) {
-        return;
-    }
-
-    return JSON.parse(customColors) ?? [];
-}
-
-function generateCustomColorsRoot(customColors: {}) {
+function createRoot(customColors:  CustomColor[]) {
     return Object.entries(customColors).map(([key, value]) => {
-        return `--${key}: ${value};`;
+        return `--${value.slug}: ${value.color};`;
     }).join('\n');
 }

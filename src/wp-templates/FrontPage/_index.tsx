@@ -18,6 +18,10 @@ export default function FrontPage() {
         title={generalSettings.title ?? ""}
         description={generalSettings.description ?? ""}
       />
+
+      <CustomColors 
+        customColors={customColors}
+      />
     </div>
   );
 }
