@@ -9,13 +9,13 @@ export default function FrontPage() {
   const dataThemeCustomizer = useQuery(ThemeCustomizerQuery);
   const dataThemeOptions = useQuery(ThemeOptionsQuery);
 
-  const generalSettings = dataFrontPage?.data?.generalSettings ?? [];
-
   const customColors = dataThemeCustomizer?.data?.themeCustomizer?.customColor ?? [];
+  const customLogo = dataThemeCustomizer?.data?.themeCustomizer?.customLogo ?? [];
+  const socialShare = dataThemeCustomizer?.data?.themeCustomizer?.socialMedia ?? [];
 
   const headerOptions = dataThemeOptions?.data?.themeOptions?.themeOptionsHeader ?? [];
 
-  const customLogo = dataThemeCustomizer?.data?.themeCustomizer?.customLogo ?? [];
+  const generalSettings = dataFrontPage?.data?.generalSettings ?? [];
 
   return (
     <div className="bg-page_color">
@@ -31,6 +31,7 @@ export default function FrontPage() {
       <Header
         headerOptions={headerOptions}
         customLogo={customLogo}
+        socialShare={socialShare}
       />
     </div>
   );

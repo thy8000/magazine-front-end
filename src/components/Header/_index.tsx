@@ -1,19 +1,17 @@
-interface HeaderOptions {
-  headerOptions: {
-    categoriesID: number[];
-    transparentHeader: boolean;
-  };
-}
+import { useQuery, gql } from "@apollo/client";
+import { HeaderCategoriesByIDQuery } from '../../queries/_index';
 
-interface CustomLogo {
-  customLogo: {
-    url: string;
-  }
-}
+export default function Header({ headerOptions, customLogo, socialShare }: any) {
+  const categoriesID = headerOptions?.categoriesID ?? [];
+  const categoriesData = useQuery(HeaderCategoriesByIDQuery, {variables: {termTaxonomyId: categoriesID}});
+  const categories = categoriesData?.data?.categories?.nodes ?? [];
 
-export default function Header({ headerOptions, customLogo }: HeaderOptions & CustomLogo) {
-  console.log(headerOptions);
-  console.log(customLogo);
+  const customLogoURL = customLogo?.url ?? [];
+
+  const isTransparent = headerOptions?.transparentHeader ?? false;
+  const transparentClass = isTransparent ? "bg-transparent" : "bg-header";
+
+  const socialShares = socialShare ?? [];
 
   return (
     <>

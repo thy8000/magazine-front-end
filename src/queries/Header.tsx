@@ -1,15 +1,12 @@
 import { gql } from "@apollo/client";
 
-export const HeaderQuery = gql`
-    {
-        customLogo {
-          data
-        }
-        themeOptionsHeader {
-          data
-        }
-        customSocialShares {
-          data
-        }
+export const HeaderCategoriesByIDQuery = gql`
+  query getHeaderCategoriesByID($termTaxonomyId: [ID]!) {
+    categories(where: { termTaxonomyId: $termTaxonomyId }) {
+      nodes {
+        categoryId
+        name
+      }
     }
+  }
 `;
