@@ -5,8 +5,6 @@ export default function Content({themeOptionsHome}: any) {
         return;
     }
 
-    console.log(data);
-
     // Loopar o data dentro do content, com um grid de posts e um sidebar pra cada item.
 
     return (

@@ -1,5 +1,4 @@
-export { FrontPageQuery } from './FrontPage';
-export { HeaderCategoriesByIDQuery } from './Header';
-export { PostsByTermIDQuery } from './PostsByTermID';
+export { FrontPageQuery, HeroPostByIDQuery } from './FrontPage';
+export { HeaderCategoriesByIDQuery, MegaMenuPostsByTermID } from './Header';
 export { ThemeCustomizerQuery } from './ThemeCustomizer';
 export { ThemeOptionsQuery } from './ThemeOptions';

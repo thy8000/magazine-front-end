@@ -20,18 +20,18 @@ const fallbackFonts = [
 ];
 
 let customColors = {
-  page: "var(--pageColor)",
-  header: "var(--headerColor)",
-  megaMenu: "var(--headerMegaMenuColor)",
-  icon: "var(--iconColor)",
-  iconHover: "var(--iconHoverColor)",
-  link: "var(--linkColor)",
-  linkHover: "var(--linkHoverColor)",
-  title: "var(--titleColor)",
-  titleHover: "var(--titleHoverColor)",
-  text: "var(--textColor)",
-  button: "var(--buttonColor)",
-  buttonHover: "var(--buttonHoverColor)",
+  page: "var(--page)",
+  header: "var(--header)",
+  megaMenu: "var(--headerMegaMenu)",
+  icon: "var(--icon)",
+  iconHover: "var(--iconHover)",
+  link: "var(--link)",
+  linkHover: "var(--linkHover)",
+  title: "var(--title)",
+  titleHover: "var(--titleHover)",
+  text: "var(--text)",
+  button: "var(--button)",
+  buttonHover: "var(--buttonHover)",
 };
 
 module.exports = {

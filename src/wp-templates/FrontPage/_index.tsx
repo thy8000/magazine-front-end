@@ -1,8 +1,7 @@
 import { useQuery, gql } from "@apollo/client";
-
 import { FrontPageQuery, ThemeCustomizerQuery, ThemeOptionsQuery } from "../../queries/_index";
-
 import { Meta, Header, CustomColors } from "../../components/_index";
+import { Hero } from "./components/_index";
 
 export default function FrontPage() {
   const dataFrontPage = useQuery(FrontPageQuery);
@@ -14,6 +13,7 @@ export default function FrontPage() {
   const socialShare = dataThemeCustomizer?.data?.themeCustomizer?.socialMedia ?? [];
 
   const headerOptions = dataThemeOptions?.data?.themeOptions?.themeOptionsHeader ?? [];
+  const heroPostID = dataThemeOptions?.data?.themeOptions?.themeOptionsHome?.homeFeaturedPostID ?? [];
 
   const generalSettings = dataFrontPage?.data?.generalSettings ?? [];
 
@@ -33,6 +33,12 @@ export default function FrontPage() {
         customLogo={customLogo}
         socialShare={socialShare}
       />
+
+      <main>
+        <Hero 
+          postID={heroPostID}
+        />
+      </main>
     </div>
   );
 }

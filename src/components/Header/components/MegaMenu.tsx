@@ -1,11 +1,11 @@
 import { useQuery, gql } from "@apollo/client";
-import { PostsByTermIDQuery } from '../../../queries/_index';
+import { MegaMenuPostsByTermID } from '../../../queries/_index';
 import { CardVertical } from "../../_index";
 
-export default function MegaMenu({termID}: any) {
-    const data = useQuery(PostsByTermIDQuery, {variables: {termID: termID}});
+export default function MegaMenu({categoryID}: any) {
+    const postsData = useQuery(MegaMenuPostsByTermID, {variables: {categoryID: categoryID}});
 
-    const posts = getPostsByTermID(data);
+    let posts = postsData?.data?.posts?.nodes ?? [];
 
     if(posts.length == 0) {
         return null;
@@ -20,14 +20,4 @@ export default function MegaMenu({termID}: any) {
             ))}
         </ul>
     )
-}
-
-function getPostsByTermID(data: any) {
-    let postsData = data?.data?.posts?.nodes ?? [];
-
-    if(postsData.length == 0) {
-        return [];
-    }
-
-    return postsData;
 }

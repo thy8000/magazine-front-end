@@ -10,3 +10,30 @@ export const HeaderCategoriesByIDQuery = gql`
     }
   }
 `;
+
+export const MegaMenuPostsByTermID = gql `
+  query MegaMenuPostsByTermID($categoryID: Int!) {
+    posts(where: {categoryId: $categoryID}, first: 4) {
+      nodes {
+        id
+        title
+        date
+        excerpt
+        link
+        featuredImage {
+            node {
+                title
+                altText
+                mediaDetails {
+                    sizes(include: MEDIUM_LARGE) {
+                    sourceUrl
+                    width
+                    height
+                }
+              }
+            }
+        }
+      }
+    }
+  }
+`;

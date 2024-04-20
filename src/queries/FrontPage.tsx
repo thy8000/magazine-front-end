@@ -14,7 +14,6 @@ export const FrontPageQuery = gql`
   }
 `;
 
-/*
 export const HeroPostByIDQuery = gql`
   query HeroPostByIDQuery($postID: ID!) {
     post(id: $postID, idType: DATABASE_ID) {
@@ -40,4 +39,3 @@ export const HeroPostByIDQuery = gql`
     }
   }
 `;
-*/
