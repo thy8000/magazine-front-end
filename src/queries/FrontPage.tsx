@@ -39,3 +39,30 @@ export const HeroPostByIDQuery = gql`
     }
   }
 `;
+
+export const SpecialsQuery = gql`
+  query getFrontPageSpecials {
+    especiais(first: 4) {
+      nodes {
+        title
+        categories(first: 1) {
+          nodes {
+            name
+            link
+          }
+        }
+        dateGmt
+        excerpt
+        featuredImage {
+          node {
+            mediaDetails {
+              sizes(include: MEDIUM_LARGE) {
+                sourceUrl
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
