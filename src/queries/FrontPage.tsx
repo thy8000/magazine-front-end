@@ -45,6 +45,7 @@ export const SpecialsQuery = gql`
     especiais(first: 4) {
       nodes {
         title
+        link
         categories(first: 1) {
           nodes {
             name

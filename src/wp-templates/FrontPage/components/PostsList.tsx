@@ -9,7 +9,7 @@ export default function PostsList({posts, title}: any) {
         <div className="container py-14">
             <h2 className="text-2xl text-title font-medium font-secondary">{title}</h2>
 
-            <div className="pt-4">
+            <div className="flex flex-col gap-8 pt-4">
                 {posts.map((post: any) => (
                     <CardHorizontal 
                         post={post}
