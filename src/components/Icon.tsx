@@ -6,6 +6,7 @@ import Twitter from "../assets/icons/twitter.svg";
 import Youtube from "../assets/icons/youtube.svg";
 import CloseMenu from "../assets/icons/close-menu.svg";
 import OpenMenu from "../assets/icons/open-menu.svg";
+import Special from "../assets/icons/special.svg";
 
 interface IconProps {
   name: keyof typeof iconTypes;
@@ -20,6 +21,7 @@ const iconTypes: { [key: string]: React.ComponentType<any> } = {
   youtube: Youtube,
   closeMenu: CloseMenu,
   openMenu: OpenMenu,
+  special: Special,
 };
 
 const IconComponent: React.FC<IconProps> = ({ name, ...props }) => {

@@ -1,5 +1,10 @@
 import { useQuery, gql } from "@apollo/client";
-import { FrontPageQuery, ThemeCustomizerQuery, ThemeOptionsQuery, SpecialsQuery } from "../../queries/_index";
+import {
+  FrontPageQuery,
+  ThemeCustomizerQuery,
+  ThemeOptionsQuery,
+  SpecialsQuery,
+} from "../../queries/_index";
 import { Meta, Header, CustomColors } from "../../components/_index";
 import { Hero, PostsList } from "./components/_index";
 
@@ -9,12 +14,18 @@ export default function FrontPage() {
   const dataThemeOptions = useQuery(ThemeOptionsQuery);
   const dataSpecialPosts = useQuery(SpecialsQuery);
 
-  const customColors = dataThemeCustomizer?.data?.themeCustomizer?.customColor ?? [];
-  const customLogo = dataThemeCustomizer?.data?.themeCustomizer?.customLogo ?? [];
-  const socialShare = dataThemeCustomizer?.data?.themeCustomizer?.socialMedia ?? [];
+  const customColors =
+    dataThemeCustomizer?.data?.themeCustomizer?.customColor ?? [];
+  const customLogo =
+    dataThemeCustomizer?.data?.themeCustomizer?.customLogo ?? [];
+  const socialShare =
+    dataThemeCustomizer?.data?.themeCustomizer?.socialMedia ?? [];
 
-  const headerOptions = dataThemeOptions?.data?.themeOptions?.themeOptionsHeader ?? [];
-  const heroPostID = dataThemeOptions?.data?.themeOptions?.themeOptionsHome?.homeFeaturedPostID ?? [];
+  const headerOptions =
+    dataThemeOptions?.data?.themeOptions?.themeOptionsHeader ?? [];
+  const heroPostID =
+    dataThemeOptions?.data?.themeOptions?.themeOptionsHome
+      ?.homeFeaturedPostID ?? [];
 
   const generalSettings = dataFrontPage?.data?.generalSettings ?? [];
 
@@ -27,9 +38,7 @@ export default function FrontPage() {
         description={generalSettings.description ?? ""}
       />
 
-      <CustomColors 
-        customColors={customColors}
-      />
+      <CustomColors customColors={customColors} />
 
       <Header
         headerOptions={headerOptions}
@@ -38,13 +47,13 @@ export default function FrontPage() {
       />
 
       <main>
-        <Hero 
-          postID={heroPostID}
-        />
+        <Hero postID={heroPostID} />
 
         <PostsList
           posts={specialPosts}
           title="Especiais"
+          iconName="special"
+          sidebarType="search"
         />
       </main>
     </div>
