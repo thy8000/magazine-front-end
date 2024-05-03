@@ -1,15 +1,24 @@
 import { CardHorizontal, SidebarSearch } from "../../../components/_index";
 import Icon from "../../../components/Icon";
+import { useQuery, gql } from "@apollo/client";
+import { PostsListQuery } from "../../../queries/_index";
 
 export default function PostsList({
   posts,
   title,
   iconName,
   sidebarType,
+  categoryID,
+  categoryName,
 }: any) {
   if (posts.length == 0) {
     return;
   }
+
+  const dataSidebarPosts = useQuery(PostsListQuery, {
+    variables: { categoryId: categoryID },
+  });
+  const sidebarPosts = dataSidebarPosts?.data?.posts?.nodes ?? [];
 
   return (
     <div className="container flex py-14 gap-12">
@@ -29,7 +38,9 @@ export default function PostsList({
         </div>
       </div>
 
-      {sidebarType == "search" && <SidebarSearch />}
+      {sidebarType == "sidebarSearch" && (
+        <SidebarSearch posts={sidebarPosts} title={categoryName} />
+      )}
     </div>
   );
 }

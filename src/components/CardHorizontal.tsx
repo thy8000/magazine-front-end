@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { formatDate } from "../includes/utils/format-date";
 
 export default function CardHorizontal({ post }: any) {
   const featuredImage = post?.featuredImage ?? [];
@@ -15,7 +14,7 @@ export default function CardHorizontal({ post }: any) {
 
   return (
     <div className="flex gap-8">
-      <a href={post.link}>
+      <a href={post.link ?? ""}>
         <div className="aspect-[320/210] h-[13rem]">
           <Image
             className={"object-cover w-full h-full " + featuredImageClasses}

@@ -26,6 +26,8 @@ export default function FrontPage() {
   const heroPostID =
     dataThemeOptions?.data?.themeOptions?.themeOptionsHome
       ?.homeFeaturedPostID ?? [];
+  const sidebarList =
+    dataThemeOptions?.data?.themeOptions?.themeOptionsSidebar?.sidebars ?? [];
 
   const generalSettings = dataFrontPage?.data?.generalSettings ?? [];
 
@@ -53,7 +55,9 @@ export default function FrontPage() {
           posts={specialPosts}
           title="Especiais"
           iconName="special"
-          sidebarType="search"
+          sidebarType={sidebarList[0]?.slug ?? "sidebarSearch"}
+          categoryID={sidebarList[0]?.categoryID ?? 0}
+          categoryName={sidebarList[0]?.categoryName ?? ""}
         />
       </main>
     </div>
